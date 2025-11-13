@@ -75,7 +75,7 @@ ga_domain: XXXXXXX
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
 sidebar-about-description: "一个前端开发、游戏开发"
-sidebar-avatar: https://github.com/Huxpro.png # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: 'img/Slime/IMG_2892.JPG' # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
 featured-tags: true # whether or not using Feature-Tags
