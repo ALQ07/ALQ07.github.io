@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "《愤怒的小鸟》发射移动轨迹实现"
-subtitle:   " \"test\""
+subtitle:   " "
 date:       2025-12-02 12:00:00
 author:     "ALQ"
 header-img: "img/post-bg-2015.jpg"
