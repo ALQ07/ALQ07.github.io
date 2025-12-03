@@ -6,6 +6,7 @@ date:       2025-12-02 12:00:00
 author:     "ALQ"
 header-img: "img/post-bg-2015.jpg"
 catalog: true
+mathjax: true
 tags:
     - 游戏开发
     - cocos creator
