@@ -1,0 +1,41 @@
+---
+layout:     post
+title:      "nvm的使用"
+subtitle:   " "
+date:       2025-12-04 12:00:00
+author:     "ALQ"
+header-img: "img/post-bg-2015.jpg"
+catalog: true
+mathjax: true
+tags:
+    - nodejs
+    - 前端
+---
+
+## 前言
+nvm可以很方便的管理node的版本，避免不同项目之间的node版本冲突。
+
+## 安装nvm
+nvm的安装比较简单，直接下载nvm的安装包，双击运行即可。[nvm的安装包](https://github.com/coreybutler/nvm-windows/releases)
+
+## 常用nvm命令
+- 查看nvm版本
+```bash
+nvm version
+```
+- 查看node版本
+```bash
+nvm list
+```
+- 安装node版本
+```bash
+nvm install <version>
+```
+- 切换node版本
+```bash
+nvm use <version>
+```
+- 卸载node版本
+```bash
+nvm uninstall <version>
+```
