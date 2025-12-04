@@ -27,9 +27,13 @@ const x = this.shootStartPos.x + v0x * this.elapsedTime;
 
 ### y方向
 在y方向上，小鸟受重力加速度影响做匀加速直线运动，已知匀加速直线运动的公式：
+
 $$v = v0 + a * t$$
+
 匀加速直线运动的位移s，可由速度积分:
+
 $$s(t) = y0 + ∫ v_y dt = y0 + ∫(v0y + a t) dt = y0 + v0y t + 0.5 a t^2$$
+
 这便是小鸟在y分量上的位移计算公式，于是在代码中有：
 ``` typescript
 const y = this.shootStartPos.y + v0y * this.elapsedTime + 0.5 * this.acc * this.elapsedTime * this.elapsedTime
