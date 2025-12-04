@@ -56,4 +56,4 @@ const y = this.shootStartPos.y + v0y * this.elapsedTime + 0.5 * this.acc * this.
 * graphics是cocoscreator的绘图组件，用于辅助绘制预测轨迹。
 
 ## 看看最终的效果
-[demo](https://alq07.github.io/Cocos_demo/AngryBirdDemo/build/web-desktop/)
+[demo](https://alq07.github.io/Cocos_demo/AngryBirdDemo/build/web-mobile/)
