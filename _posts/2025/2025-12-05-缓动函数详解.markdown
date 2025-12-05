@@ -1,0 +1,53 @@
+---
+layout:     post
+title:      "缓动函数详解"
+subtitle:   " "
+date:       2025-12-05 12:00:00
+author:     "ALQ"
+header-img: "img/post-bg-2015.jpg"
+catalog: true
+mathjax: true
+tags:
+    - cocoscreator
+    - 游戏开发
+---
+
+## 缓动函数
+在cocoscreator中，实现一个动画效果，我们一般这样写：
+```typescript
+const skin = this.node.getChildByPath('Skin');
+const duration = 1;
+tween(skin).to(duration * 1 / 4, { position: v3(0, 100, 0) }, { easing: 'quartOut' })
+  .to(duration * 3 / 4, { position: v3(0, 0, 0) }, { easing: 'quartOut' })
+  .start();
+```
+* 缓动函数的参数
+    - duration：动画持续时间，单位秒
+    - easing：缓动函数，默认是线性函数，这里我们使用了quartOut函数，它的效果是先快后慢
+
+### cocos creator 提供的缓动函数
+cocos creator 提供了一些常用的缓动函数:
+![alt text](../../img/ALQ/image.png)
+
+### 自定义缓动函数
+如果cocos creator 提供的缓动函数不能满足我们的需求，我们可以自定义缓动函数。
+
+如何写一个缓动函数呢，我们以easeoutquad为例：
+![alt text](../../img/ALQ/image1.png)
+
+根据图像可知，easeoutquad是一个开口向下的抛物线函数，根据函数特性可得：
+
+$y = 1 - (1 - x)^2$
+
+* x 表示动画进度，范围是0到1
+* y 表示动画进度对应的输出值，如果是一个位移的动画，那么y就表示位移进度，范围也是0到1
+* 抛物线函数的幂次表示的是动画进度的变化速率，幂次越大，函数曲线越陡峭，动画进度变化越快。
+
+我们将自定义缓动函数放入cocoscreator的tween中：
+```typescript
+const skin = this.node.getChildByPath('Skin');
+const duration = 1;
+tween(skin).to(duration * 1 / 4, { position: v3(0, 100, 0) }, { easing: (x) => 1 - (1 - x) ** 2 })
+  .to(duration * 3 / 4, { position: v3(0, 0, 0) }, { easing: (x) => 1 - (1 - x) ** 2 })
+  .start();
+```
