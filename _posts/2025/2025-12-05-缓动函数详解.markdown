@@ -8,7 +8,7 @@ header-img: "img/post-bg-2015.jpg"
 catalog: true
 mathjax: true
 tags:
-    - cocoscreator
+    - cocos creator
     - 游戏开发
 ---
 
@@ -27,13 +27,13 @@ tween(skin).to(duration * 1 / 4, { position: v3(0, 100, 0) }, { easing: 'quartOu
 
 ### cocos creator 提供的缓动函数
 cocos creator 提供了一些常用的缓动函数:
-![alt text](../../img/ALQ/image.png)
+![alt text](/img/ALQ/image.png)
 
 ### 自定义缓动函数
 如果cocos creator 提供的缓动函数不能满足我们的需求，我们可以自定义缓动函数。
 
 如何写一个缓动函数呢，我们以easeoutquad为例：
-![alt text](../../img/ALQ/image1.png)
+![alt text](/img/ALQ/image1.png)
 
 根据图像可知，easeoutquad是一个开口向下的抛物线函数，根据函数特性可得：
 
