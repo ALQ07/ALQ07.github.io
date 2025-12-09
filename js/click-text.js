@@ -20,7 +20,7 @@
         var heart = document.createElement('span');
         heart.innerHTML = '❤';
         heart.style.position = 'absolute';
-        heart.style.color = '#FF6B6B'; // 爱心固定为红色，也可以改为随机色
+        heart.style.color = '#FF6B6B'; // 爱心固定为红色
         heart.style.fontSize = (Math.random() * 10 + 15) + 'px'; // 随机大小 15-25px
         heart.style.left = x + 'px';
         heart.style.top = y + 'px';
@@ -28,19 +28,21 @@
         heart.style.zIndex = '9999';
         heart.style.userSelect = 'none';
         heart.style.transform = 'translate(-50%, -50%)'; // 居中
+        heart.style.fontWeight = 'bold'; // 加粗，更明显
+        heart.style.textShadow = '0 0 5px rgba(255, 107, 107, 0.5)'; // 增加发光效果
 
         document.body.appendChild(heart);
 
-        var angle = Math.random() * Math.PI * 2;
-        var velocity = Math.random() * 3 + 2; // 稍微慢一点
-        var vx = Math.cos(angle) * velocity;
-        var vy = Math.sin(angle) * velocity;
+        // 爱心初始向上速度
+        var angle = (Math.random() * Math.PI) + Math.PI; // 只向下半圆随机，配合反重力看起来是向上飘
+        var velocity = Math.random() * 2 + 1;
+        var vx = (Math.random() - 0.5) * 4; // 水平随机漂移
+        var vy = - (Math.random() * 3 + 2); // 初始向上的速度
         var life = 1.0;
 
         function updateHeart() {
-            vx *= CONFIG.friction;
-            vy *= CONFIG.friction;
-            vy -= 0.1; // 爱心反重力，向上飘
+            vx *= 0.98; // 水平阻力
+            vy -= 0.05; // 持续向上的浮力
 
             var currentLeft = parseFloat(heart.style.left);
             var currentTop = parseFloat(heart.style.top);
@@ -48,8 +50,9 @@
             heart.style.left = (currentLeft + vx) + 'px';
             heart.style.top = (currentTop + vy) + 'px';
 
-            life -= 0.02;
+            life -= 0.015; // 消失得慢一点
             heart.style.opacity = life;
+            heart.style.transform = 'translate(-50%, -50%) scale(' + (1 + (1 - life) * 0.5) + ')'; // 慢慢变大
 
             if (life > 0) {
                 requestAnimationFrame(updateHeart);
