@@ -16,6 +16,52 @@
         '#FF9F43', '#54A0FF', '#5F27CD', '#FF9FF3', '#FCA5A5'
     ];
 
+    function createHeart(x, y) {
+        var heart = document.createElement('span');
+        heart.innerHTML = '❤';
+        heart.style.position = 'absolute';
+        heart.style.color = '#FF6B6B'; // 爱心固定为红色，也可以改为随机色
+        heart.style.fontSize = (Math.random() * 10 + 15) + 'px'; // 随机大小 15-25px
+        heart.style.left = x + 'px';
+        heart.style.top = y + 'px';
+        heart.style.pointerEvents = 'none';
+        heart.style.zIndex = '9999';
+        heart.style.userSelect = 'none';
+        heart.style.transform = 'translate(-50%, -50%)'; // 居中
+
+        document.body.appendChild(heart);
+
+        var angle = Math.random() * Math.PI * 2;
+        var velocity = Math.random() * 3 + 2; // 稍微慢一点
+        var vx = Math.cos(angle) * velocity;
+        var vy = Math.sin(angle) * velocity;
+        var life = 1.0;
+
+        function updateHeart() {
+            vx *= CONFIG.friction;
+            vy *= CONFIG.friction;
+            vy -= 0.1; // 爱心反重力，向上飘
+
+            var currentLeft = parseFloat(heart.style.left);
+            var currentTop = parseFloat(heart.style.top);
+
+            heart.style.left = (currentLeft + vx) + 'px';
+            heart.style.top = (currentTop + vy) + 'px';
+
+            life -= 0.02;
+            heart.style.opacity = life;
+
+            if (life > 0) {
+                requestAnimationFrame(updateHeart);
+            } else {
+                if (heart.parentNode) {
+                    heart.parentNode.removeChild(heart);
+                }
+            }
+        }
+        requestAnimationFrame(updateHeart);
+    }
+
     function createParticle(x, y) {
         var element = document.createElement('span');
         element.style.position = 'absolute';
@@ -73,8 +119,15 @@
         var x = e.clientX + window.scrollX;
         var y = e.clientY + window.scrollY;
 
+        // 产生粒子爆炸
         for (var i = 0; i < CONFIG.particleCount; i++) {
             createParticle(x, y);
+        }
+
+        // 产生 1-3 个爱心
+        var heartCount = Math.floor(Math.random() * 3) + 1;
+        for (var j = 0; j < heartCount; j++) {
+            createHeart(x, y);
         }
     });
 })();
