@@ -11,7 +11,7 @@ tags:
     - CocosCreator
 ---
 
-https://forum.cocos.org/t/topic/95043
+[**原文**](https://forum.cocos.org/t/topic/95043)
 
 ## 前言
 
@@ -398,4 +398,4 @@ Cache Mode 有以下3 种选择：
 ## 相关资料
 
 - **Cocos Creator 用户手册**  [https://docs.cocos.com/creator/manual/zh/ 144](https://docs.cocos.com/creator/manual/zh/)
-- **扩展**  https://www.cnblogs.com/gamedaybyday/p/18985571#t1
+- **扩展**  [https://www.cnblogs.com/gamedaybyday/p/18985571#t1](https://www.cnblogs.com/gamedaybyday/p/18985571#t1)
